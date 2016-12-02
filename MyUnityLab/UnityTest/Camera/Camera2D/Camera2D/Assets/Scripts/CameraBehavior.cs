@@ -40,11 +40,8 @@ public class CameraBehavior : MonoBehaviour {
 	{
 		/******/
 		// A supprimer une fois la vitesse définie après nos tests.
-		if(m_iVitesse != go_player.GetComponent<Controller>().getVitesse())
-		{
-			m_iVitesse= go_player.GetComponent<Controller>().getVitesse();
-		}
-		/******/
+		if (m_iVitesse != go_player.GetComponent<Controller> ().getVitesse ())
+			m_iVitesse = go_player.GetComponent<Controller> ().getVitesse ();
 
 		m_v3CentreCamera = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + m_fDistanceJoueurEnZ);
 
@@ -59,9 +56,6 @@ public class CameraBehavior : MonoBehaviour {
 	initialiserPositionCamera ()
 	{
 		transform.position = new Vector3 (0.1f, m_fDistanceJoueurEnY, go_player.transform.position.z - m_fDistanceJoueurEnZ);
-/*		transform.position = new Vector3 (transform.position.x,
-			m_fDistanceJoueurEnY,
-			-m_fDistanceJoueurEnZ);*/
 		transform.rotation = new Quaternion(0, 0, 0, 1.0f);
 	}
 
@@ -117,8 +111,8 @@ public class CameraBehavior : MonoBehaviour {
 				
 				this.transform.position =
 					new Vector3 (this.transform.position.x + m_iVitesse * Time.deltaTime, 
-						this.transform.position.y,
-						this.transform.position.z);
+						m_fDistanceJoueurEnY,
+						go_player.transform.position.z - m_fDistanceJoueurEnZ);
 
 				//this.transform.LookAt (go_toLookAt.transform);
 			}
@@ -132,8 +126,8 @@ public class CameraBehavior : MonoBehaviour {
 
 				this.transform.position =
 					new Vector3 (this.transform.position.x - m_iVitesse * Time.deltaTime, 
-						this.transform.position.y,
-						this.transform.position.z);
+						m_fDistanceJoueurEnY,
+						go_player.transform.position.z - m_fDistanceJoueurEnZ);
 			} 
 		} 
 	}
