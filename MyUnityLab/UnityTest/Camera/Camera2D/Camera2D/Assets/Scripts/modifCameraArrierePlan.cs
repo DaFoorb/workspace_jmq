@@ -54,7 +54,7 @@ public class modifCameraArrierePlan : MonoBehaviour {
 		if(m_bEstTriggered
 			&& -m_fDernierePositionZoomZ <= go_MainCamera.transform.position.z)
 		{
-			Debug.Log ("fonction zoom : true");
+//			Debug.Log ("fonction zoom : true");
 			/* On garde en mémoire la position du joueur avant sa modification */
 			if(Vector3.zero == m_v3DernierePositionCamera)
 				m_v3DernierePositionCamera = go_MainCamera.transform.position;
@@ -62,25 +62,26 @@ public class modifCameraArrierePlan : MonoBehaviour {
 			/* On modifie la camera pour voir l'objet à l'arrière plan*/
 			Direction directionCourrante = go_Joueur.GetComponent<Player> ().getDirectionCourrante ();
 
-			Debug.Log ("fonction zoom : " + directionCourrante);
+//			Debug.Log ("fonction zoom : " + directionCourrante);
 
 			if (Direction.DIRECTION_DROITE == directionCourrante)
 			{
-				Debug.Log ("fonction zoom : Dezoom");
+//				Debug.Log ("fonction zoom : Dezoom");
 				Vector3 tmp= new Vector3 (0, 0, -m_fMoveZ * Time.deltaTime);
-				go_MainCamera.GetComponent<CameraBehavior> ().mettreAJourPositionCameraZ (tmp);
+				go_MainCamera.GetComponent<CameraBehavior2> ().mettreAJourPositionCamera (tmp);
 			}
 			
 			else if (Direction.DIRECTION_GAUCHE == directionCourrante)
 			{
-				Debug.Log ("fonction zoom : Zoom");
+//				Debug.Log ("fonction zoom : Zoom");
 				Vector3 tmp= new Vector3 (0, 0, -m_fMoveZ * Time.deltaTime);
-				go_MainCamera.GetComponent<CameraBehavior> ().mettreAJourPositionCameraZ (tmp);
+				go_MainCamera.GetComponent<CameraBehavior2> ().mettreAJourPositionCamera (tmp);
 			}
 
 		}
 	}
 
 }
+
 
 
